@@ -8,7 +8,7 @@ function App() {
   const endpointKey = import.meta.env.VITE_API_KEY;
   const [films, setFilm] = useState([]);
   const [searchterm, setSearchTerm] = useState([])
-  const endpoint = `https://api.themoviedb.org/3/search/movie?api_key=${endpointKey}&query=${searchTerm}`
+  const endpoint = `https://api.themoviedb.org/3/search/movie?api_key=${endpointKey}&query=${searchterm}`
   useEffect(fetchFilm, [])
   function fetchFilm() {
     axios.get(endpoint).then(response => {
@@ -19,6 +19,7 @@ function App() {
     <>
 
       <input type='text' value={searchterm} onChange={(e) => setSearchTerm(e.target.value)} placeholder='Cerca il film che preferisci' />
+      <button>Cerca</button>
       <ul>
         {films.map((film) => (
           <li>{film.original_title}</li>
