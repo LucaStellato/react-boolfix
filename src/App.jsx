@@ -7,7 +7,7 @@ import axios from 'axios'
 function App() {
   const endpointKey = import.meta.env.VITE_API_KEY;
   const [films, setFilm] = useState([]);
-  const endpoint = `https://api.themoviedb.org/3/search/movie?api_key=${endpointKey}`
+  const endpoint = `https://api.themoviedb.org/3/search/movie?api_key=${endpointKey}&query=${searchTerm}`
   useEffect(fetchFilm, [])
   function fetchFilm() {
     axios.get(endpoint).then(response => {
