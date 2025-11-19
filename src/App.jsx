@@ -18,7 +18,7 @@ function App() {
   return (
     <>
 
-      <input type='text' value={searchterm} placeholder='Cerca il film che preferisci' />
+      <input type='text' value={searchterm} onChange={(e) => setSearchTerm(e.target.value)} placeholder='Cerca il film che preferisci' />
       <ul>
         {films.map((film) => (
           <li>{film.original_title}</li>
