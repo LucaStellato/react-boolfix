@@ -11,14 +11,14 @@ function App() {
   useEffect(fetchFilm, [])
   function fetchFilm() {
     axios.get(endpoint).then(response => {
-      setFilm(response.data)
+      setFilm(response.data.results)
     })
   }
   return (
     <>
       <ul>
         {films.map((film) => (
-          <li>{ }</li>
+          <li>{film.original_title}</li>
 
 
         ))}
