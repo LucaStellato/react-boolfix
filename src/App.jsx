@@ -22,7 +22,12 @@ function App() {
       <button onClick={fetchFilm}>Cerca</button>
       <ul>
         {films.map((film) => (
-          <li>{film.original_title}</li>
+          <div style={{ display: 'flex' }}>
+            <li>{film.title}
+              <p>{film.original_title}</p>
+              <p>{film.original_language}</p>
+              <p>{film.vote_average}</p></li>
+          </div>
 
 
         ))}
