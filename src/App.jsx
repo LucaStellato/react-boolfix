@@ -26,6 +26,11 @@ function App() {
       setSeries(response.data.results)
     })
   }
+
+  function getStar(vote) {
+    return Math.ceil(vote / 2)
+
+  }
   //console.log({ series })
   return (
     <>
@@ -45,9 +50,9 @@ function App() {
             <br />
             {serie.original_name}
             <br />
-            <span className={`fi fi-${serie.original_language}`}></span>
+            <span className={`fi fi-${serie.origin_country[0].toLowerCase()}`}></span>
             <br />
-            {serie.vote_average}
+            {getStar(serie.vote_average)}
           </li>
 
 
