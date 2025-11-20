@@ -8,7 +8,7 @@ import "flag-icons/css/flag-icons.min.css";
 function App() {
   const endpointKey = import.meta.env.VITE_API_KEY;
   const [films, setFilm] = useState([]);
-
+  const [series, setSeries] = useState([]);
   const [searchterm, setSearchTerm] = useState('')
   const endpoint = `https://api.themoviedb.org/3/search/movie?api_key=${endpointKey}&query=${searchterm}`
   const endpoint_series = `https://api.themoviedb.org/3/search/tv?api_key=${endpointKey}&query=scrubs`
@@ -21,7 +21,7 @@ function App() {
   return (
     <>
 
-      <input type='text' value={searchterm} onChange={(e) => setSearchTerm(e.target.value)} placeholder='Cerca il film che preferisci' />
+      <input type='text' value={searchterm} onChange={(e) => setSearchTerm(e.target.value)} placeholder='Cerca il film o serie che preferisci' />
       <button onClick={fetchFilm}>Cerca</button>
       <ul>
         {films.map((film) => (
