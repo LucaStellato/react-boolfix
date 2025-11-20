@@ -11,23 +11,46 @@ function App() {
   const [series, setSeries] = useState([]);
   const [searchterm, setSearchTerm] = useState('')
   const endpoint = `https://api.themoviedb.org/3/search/movie?api_key=${endpointKey}&query=${searchterm}`
-  const endpoint_series = `https://api.themoviedb.org/3/search/tv?api_key=${endpointKey}&query=scrubs`
+  const endpoint_series = `https://api.themoviedb.org/3/search/tv?api_key=${endpointKey}&query=${searchterm}`
   useEffect(fetchFilm, [])
+  useEffect(fetchSeries, [])
   function fetchFilm() {
     axios.get(endpoint).then(response => {
       setFilm(response.data.results)
     })
-    function fetchSeries() {
-      axios.get(endpoint_series).then(response => {
-        setSeries(response.data.result)
-      })
-    }
+
+
   }
+  function fetchSeries() {
+    axios.get(endpoint_series).then(response => {
+      setSeries(response.data.results)
+    })
+  }
+  //console.log({ series })
   return (
     <>
 
       <input type='text' value={searchterm} onChange={(e) => setSearchTerm(e.target.value)} placeholder='Cerca il film o serie che preferisci' />
-      <button onClick={fetchFilm}>Cerca</button>
+      <button onClick={() => (
+        fetchFilm(),
+        fetchSeries()
+      )}>Cerca</button>
+
+      <ul>
+        {series.map((serie) => (
+          <li>{serie.name}
+            <br />
+            {serie.original_name}
+            <br />
+            <span className={`fi fi-${serie.original_language}`}></span>
+            <br />
+            {serie.vote_average}</li>
+
+
+
+        ))}
+      </ul >
+
       <ul>
         {films.map((film) => (
           <li>{film.title}
@@ -42,6 +65,7 @@ function App() {
 
         ))}
       </ul >
+
     </>
   )
 }
