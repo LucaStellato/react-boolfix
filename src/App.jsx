@@ -38,13 +38,17 @@ function App() {
 
       <ul>
         {series.map((serie) => (
-          <li>{serie.name}
+          <li>
+            <img src={`https://image.tmdb.org/t/p/w342${serie.backdrop_path}`} />
+            <br />
+            {serie.name}
             <br />
             {serie.original_name}
             <br />
             <span className={`fi fi-${serie.original_language}`}></span>
             <br />
-            {serie.vote_average}</li>
+            {serie.vote_average}
+          </li>
 
 
 
